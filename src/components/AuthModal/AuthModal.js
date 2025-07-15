@@ -5,6 +5,7 @@ const AuthModal = ({ isLogin, onClose }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState(''); // Chỉ dùng cho đăng ký
+  const [confirmPassword, setConfirmPassword] = useState(''); // State MỚI cho nhập lại mật khẩu
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -12,7 +13,13 @@ const AuthModal = ({ isLogin, onClose }) => {
       console.log('Đăng nhập:', { email, password });
       // Xử lý logic đăng nhập ở đây
     } else {
-      console.log('Đăng ký:', { username, email, password });
+      // Logic kiểm tra mật khẩu trùng khớp (tùy chọn, nhưng nên có)
+      if (password !== confirmPassword) {
+        console.error('Mật khẩu và nhập lại mật khẩu không khớp!');
+        // Bạn có thể hiển thị thông báo lỗi cho người dùng ở đây
+        return; // Ngừng submit nếu mật khẩu không khớp
+      }
+      console.log('Đăng ký:', { username, email, password, confirmPassword });
       // Xử lý logic đăng ký ở đây
     }
     onClose(); // Đóng modal sau khi submit
@@ -58,6 +65,19 @@ const AuthModal = ({ isLogin, onClose }) => {
               required
             />
           </div>
+          {/* Trường nhập lại mật khẩu MỚI, chỉ hiển thị khi Đăng ký */}
+          {!isLogin && (
+            <div className="form-group">
+              <label htmlFor="confirm-password">Xác nhận mật khẩu</label>
+              <input
+                type="password"
+                id="confirm-password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required
+              />
+            </div>
+          )}
           <button type="submit" className="auth-submit-button">
             {isLogin ? 'Đăng nhập' : 'Đăng ký'}
           </button>
