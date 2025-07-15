@@ -11,6 +11,14 @@
     align-items: center;
     box-shadow: var(--box-shadow-sm);
     border-bottom: 1px solid var(--color-primary-dark);
+
+    /* --- CỐ ĐỊNH HEADER --- */
+    position: fixed; /* Cố định vị trí của header */
+    top: 0;          /* Đặt header ở trên cùng của khung nhìn */
+    left: 0;         /* Đặt header ở bên trái của khung nhìn */
+    width: 100%;     /* Đảm bảo header chiếm toàn bộ chiều rộng màn hình */
+    z-index: 1000;   /* Đảm bảo header nằm trên các nội dung khác */
+    /* ---------------------- */
 }
 
 .app-title {
