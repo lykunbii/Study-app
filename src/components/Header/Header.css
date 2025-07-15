@@ -6,18 +6,18 @@
     color: var(--color-text);
     padding: var(--spacing-md) var(--spacing-lg);
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Cho phép các mục wrap nếu không đủ chỗ */
     justify-content: space-between;
     align-items: center;
     box-shadow: var(--box-shadow-sm);
     border-bottom: 1px solid var(--color-primary-dark);
 
     /* --- CỐ ĐỊNH HEADER --- */
-    position: fixed; /* Cố định vị trí của header */
-    top: 0;          /* Đặt header ở trên cùng của khung nhìn */
-    left: 0;         /* Đặt header ở bên trái của khung nhìn */
-    width: 100%;     /* Đảm bảo header chiếm toàn bộ chiều rộng màn hình */
-    z-index: 1000;   /* Đảm bảo header nằm trên các nội dung khác */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Đảm bảo header nằm trên mọi thứ khác */
     /* ---------------------- */
 }
 
@@ -26,15 +26,48 @@
     font-size: 2rem;
     font-weight: 700;
     color: var(--color-secondary-dark);
-    flex-shrink: 0;
-    margin-bottom: 0.5rem; /* For small screens */
+    flex-shrink: 0; /* Ngăn không cho title co lại */
+    /* margin-bottom: 0.5rem; */ /* Bỏ cái này vì flex-wrap sẽ tự xử lý trên mobile */
 }
+
+/* Hamburger Menu Button (MỚI) */
+.hamburger-menu-button {
+    display: none; /* Mặc định ẩn trên desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    position: relative; /* Cho các bar bên trong */
+    z-index: 1001; /* Đảm bảo nút hamburger nằm trên nav khi mở */
+}
+
+.hamburger-menu-button .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 4px auto;
+    background-color: var(--color-secondary-dark);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Animation cho Hamburger -> X (Khi menu mở) */
+.hamburger-menu-button.active .bar:nth-child(2) {
+    opacity: 0; /* Ẩn thanh giữa */
+}
+.hamburger-menu-button.active .bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg); /* Xoay và di chuyển thanh trên cùng */
+}
+.hamburger-menu-button.active .bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg); /* Xoay và di chuyển thanh dưới cùng */
+}
+
 
 .app-nav {
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
     margin-left: auto;
+    /* transition: all 0.3s ease-in-out; */ /* Thêm transition cho việc mở/đóng menu */
 }
 
 .nav-button {
@@ -71,8 +104,8 @@
     border-radius: var(--border-radius-md);
     font-weight: 500;
     transition: background-color 0.2s ease, transform 0.1s ease;
-    border: none; /* Đảm bảo không có border thừa */
-    box-shadow: none; /* Đảm bảo không có shadow thừa */
+    border: none;
+    box-shadow: none;
 }
 
 .auth-button:hover {
@@ -81,41 +114,77 @@
 }
 
 /* Responsive adjustments for Header */
-@media (max-width: 900px) {
+@media (max-width: 900px) { /* Breakpoint cho màn hình tablet/laptop nhỏ */
     .app-header {
-        flex-direction: column;
-        align-items: flex-start;
+        /* flex-direction: column; */ /* Bỏ cái này để app-title và hamburger ở 2 bên */
+        /* align-items: flex-start; */
+        padding: var(--spacing-md) var(--spacing-lg); /* Giữ padding */
     }
 
     .app-title {
-        margin-bottom: var(--spacing-sm);
-        text-align: center;
-        width: 100%;
+        /* margin-bottom: var(--spacing-sm); */ /* Bỏ margin-bottom */
+        /* text-align: center; */
+        /* width: 100%; */ /* Bỏ width 100% */
+    }
+
+    .hamburger-menu-button {
+        display: block; /* Hiển thị nút hamburger */
     }
 
     .app-nav {
-        margin-left: 0;
-        width: 100%;
-        justify-content: center;
+        /* Khi màn hình nhỏ, nav sẽ chuyển sang dạng overlay hoặc trượt */
+        position: fixed;
+        top: 0; /* Đặt từ trên cùng */
+        right: -100%; /* Mặc định ẩn ra ngoài màn hình */
+        width: 70%; /* Chiếm 70% chiều rộng màn hình */
+        height: 100vh; /* Chiếm toàn bộ chiều cao khung nhìn */
+        background-color: var(--color-primary-light); /* Màu nền của menu */
+        flex-direction: column; /* Xếp các nút theo chiều dọc */
+        justify-content: flex-start; /* Bắt đầu từ trên cùng */
+        align-items: flex-start; /* Căn trái các nút */
+        padding: var(--spacing-xxl) var(--spacing-lg); /* Padding bên trong menu */
+        box-shadow: -2px 0 5px rgba(0,0,0,0.2); /* Bóng đổ cho menu trượt ra */
+        transition: right 0.3s ease-in-out; /* Hiệu ứng trượt */
+        gap: var(--spacing-md); /* Khoảng cách giữa các nút */
     }
-}
-@media (max-width: 600px) {
-    .app-title {
-        font-size: 1.3rem;
-        margin-bottom: var(--spacing-xs);
+
+    .app-nav.open { /* Class này sẽ được thêm bằng JavaScript khi menu mở */
+        right: 0; /* Trượt vào màn hình */
     }
+
     .nav-button, .auth-button {
-        font-size: 0.95rem;
-        padding: 0.6rem 0.8rem;
+        width: 100%; /* Các nút chiếm toàn bộ chiều rộng của menu */
+        text-align: left; /* Căn trái văn bản trong nút */
+        padding: var(--spacing-sm) var(--spacing-md); /* Điều chỉnh padding cho nút dọc */
     }
+
+    /* Đảm bảo nội dung chính không bị che bởi header cố định */
+    /* Bạn cần xác định chiều cao chính xác của header trên desktop và mobile
+       để đặt padding-top cho body hoặc main-content */
 }
-@media (max-width: 400px) {
-    .app-nav {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    .nav-button, .auth-button {
-        width: 100%;
-        text-align: center;
+
+/* Nếu bạn có một overlay để làm mờ nội dung phía sau menu (tùy chọn) */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999; /* Nằm dưới menu nhưng trên nội dung */
+}
+.overlay.active {
+    display: block;
+}
+
+/* Điều chỉnh padding-top cho body hoặc main-content */
+body {
+    padding-top: 70px; /* Ước tính chiều cao header trên desktop. Bạn cần đo chính xác */
+}
+
+@media (max-width: 900px) {
+    body {
+        padding-top: 70px; /* Chiều cao header trên mobile có thể tương tự hoặc cần điều chỉnh */
     }
 }
