@@ -1,0 +1,108 @@
+/* ===================================== */
+/* 3. Search & Filter Section            */
+/* ===================================== */
+.search-filter-section {
+    /* Layout & Box Model */
+    padding: var(--spacing-lg) 0; /* Tăng padding trên dưới để có khoảng trống tốt hơn */
+    margin-bottom: var(--spacing-xl); /* Tăng margin-bottom để cách xa các phần khác */
+    background-color: var(--color-white); /* Thường thì phần này nên là màu nền chính hoặc trắng để nổi bật */
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md); /* Sử dụng shadow-md để nổi bật hơn box-shadow-sm */
+    max-width: var(--max-width-lg); /* Giới hạn chiều rộng để căn giữa và đẹp hơn */
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid var(--color-border); /* Thêm border nhẹ để định hình rõ hơn */
+}
+
+.search-filter-container {
+    /* Flexbox Layout */
+    display: flex;
+    flex-wrap: wrap; /* Cho phép xuống dòng trên màn hình nhỏ */
+    gap: var(--spacing-md); /* Khoảng cách giữa các phần tử nhập liệu, tăng từ sm lên md */
+    justify-content: center; /* Căn giữa các input/select */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    padding: var(--spacing-md); /* Padding bên trong container */
+}
+
+/* Base styles for inputs and selects */
+.search-input,
+.price-filter-select,
+.product-type-filter-select {
+    /* Box Model */
+    padding: 0.8rem 1rem; /* Điều chỉnh padding cho cân đối */
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    min-width: 180px; /* Giảm min-width một chút để linh hoạt hơn trên các màn hình vừa */
+    flex: 1; /* Cho phép các mục phát triển và co lại */
+
+    /* Typography */
+    font-size: var(--font-size-md); /* Sử dụng biến font-size-md */
+    color: var(--color-text);
+    line-height: 1.5; /* Đảm bảo chiều cao dòng tốt */
+
+    /* Appearance & Interaction */
+    background-color: var(--color-light-gray); /* Màu nền nhẹ nhàng cho input/select */
+    transition: all 0.3s ease; /* Hiệu ứng chuyển động mượt mà hơn cho tất cả */
+    -webkit-appearance: none; /* Reset mặc định của trình duyệt cho select */
+    -moz-appearance: none; /* Reset mặc định của trình duyệt cho select */
+    appearance: none; /* Reset mặc định của trình duyệt cho select */
+}
+
+/* Placeholder style */
+.search-input::placeholder {
+    color: var(--color-dark-gray);
+    opacity: 0.8; /* Làm mờ placeholder một chút */
+}
+
+/* Focus states */
+.search-input:focus,
+.price-filter-select:focus,
+.product-type-filter-select:focus {
+    border-color: var(--color-primary); /* Màu border khi focus, dùng màu primary */
+    box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.2); /* Sử dụng RGBA từ biến primary */
+    outline: none; /* Bỏ outline mặc định của trình duyệt */
+    background-color: var(--color-white); /* Nền trắng khi focus để nổi bật */
+}
+
+/* Style for select arrow (optional, depends on overall design) */
+.price-filter-select,
+.product-type-filter-select {
+    /* Để tùy chỉnh mũi tên của select, bạn có thể cần bọc nó trong một div và dùng pseudo-elements */
+    /* Hoặc sử dụng icon SVG làm background-image */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23777777'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+    padding-right: 30px; /* Thêm padding bên phải để mũi tên không che chữ */
+}
+
+/* Responsive adjustments for SearchFilterSection */
+@media (max-width: 768px) { /* Điều chỉnh breakpoint cho linh hoạt hơn */
+    .search-filter-section {
+        padding: var(--spacing-md) var(--spacing-sm); /* Padding nhỏ hơn trên di động */
+        margin-bottom: var(--spacing-lg);
+    }
+    .search-filter-container {
+        flex-direction: column; /* Xếp chồng các input/select */
+        align-items: stretch; /* Kéo dài các input/select theo chiều ngang */
+        gap: var(--spacing-sm); /* Khoảng cách nhỏ hơn */
+    }
+
+    .search-input,
+    .price-filter-select,
+    .product-type-filter-select {
+        min-width: unset; /* Bỏ min-width để chiếm hết chiều rộng có sẵn */
+        width: 100%; /* Đảm bảo chiếm 100% chiều rộng */
+    }
+}
+
+/* Thêm biến màu RGB nếu chưa có trong global.css để dùng cho box-shadow rgba() */
+/* Ví dụ trong global.css của bạn */
+/*
+:root {
+    --color-primary: #3498DB;
+    --color-primary-rgb: 52, 152, 219; // Thêm biến này
+    --color-secondary: #2C7EBB; // Darker primary for focus
+    // ... các biến khác
+}
+*/

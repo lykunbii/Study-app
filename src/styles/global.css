@@ -1,0 +1,299 @@
+/* ===================================== */
+/* 1. Global & Variables                 */
+/* ===================================== */
+:root {
+    /* Colors - NEW PALETTE with White Primary */
+    --color-primary: #FFFFFF; /* White */
+    --color-primary-light: #F0F5F8; /* Very light gray/blue for subtle background */
+    --color-primary-dark: #E0E6EB; /* Light gray for borders or subtle shadows */
+
+    --color-secondary: #2C7EBB; /* Blue (formerly primary), now a strong accent */
+    --color-secondary-light: #5AA1D7;
+    --color-secondary-dark: #1F5A84;
+
+    --color-accent: #6CC04A; /* Green (formerly secondary), now a fresh accent */
+    --color-accent-dark: #5BAA3F; /* Darker green for hover */
+
+    --color-text: #333333; /* Dark gray for main text */
+    --color-text-light: #777777; /* Muted gray for light text */
+    --color-white: #ffffff; /* Explicit white, same as --color-primary */
+
+    --color-light-gray: #F5F7FA; /* General light background */
+    --color-medium-gray: #DAE0E6; /* Medium gray for borders/dividers */
+    --color-dark-gray: #AAB7C4; /* Darker cool gray for placeholder/inactive states */
+    --color-border: #E0E6EB; /* Subtle border color */
+
+    --color-success: #2ECC71; /* Standard Green for success */
+    --color-info: #3498db;   /* Standard Blue for info */
+    --color-warning: #F1C40F; /* Bright Yellow for warning */
+    --color-danger: #E74C3C; /* A vibrant Red for danger */
+
+    /* Fonts (keep as is or adjust if needed) */
+    --font-family-primary: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    --font-size-base: 16px;
+    --line-height-base: 1.6;
+
+    /* Spacing (keep as is) */
+    --spacing-xs: 0.5rem;   /* 8px */
+    --spacing-sm: 1rem;     /* 16px */
+    --spacing-md: 1.5rem;   /* 24px */
+    --spacing-lg: 2rem;     /* 32px */
+    --spacing-xl: 3rem;     /* 48px */
+
+    /* Borders & Shadows (keep as is) */
+    --border-radius-sm: 0.25rem; /* 4px */
+    --border-radius-md: 0.5rem;  /* 8px */
+    --border-radius-lg: 0.75rem; /* 12px */
+    --box-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --box-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --box-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Base Reset & Typography */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: var(--font-size-base); /* 16px base */
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family-primary);
+    line-height: var(--line-height-base);
+    color: var(--color-text);
+    background-color: var(--color-light-gray);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text);
+    line-height: 1.2;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+p { margin-bottom: var(--spacing-sm); }
+
+a {
+    color: var(--color-secondary); /* Links now use the blue accent */
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+    color: var(--color-secondary-dark);
+    text-decoration: underline;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    font-family: inherit;
+    font-size: inherit;
+    transition: all 0.2s ease-in-out;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-md);
+}
+
+button:focus {
+    outline: 2px solid var(--color-secondary-light); /* Focus outline uses accent */
+    outline-offset: 2px;
+}
+/* Trong global.css hoặc file CSS chung của bạn */
+
+.section-title {
+    font-size: 2rem; /* Giữ kích thước chữ */
+    color: var(--color-secondary-dark); /* Giữ màu chữ */
+    margin-bottom: var(--spacing-xl);
+    text-align: center; /* Đảm bảo căn giữa */
+    position: relative;
+    padding-bottom: 0.5rem; /* Để dành chỗ cho đường kẻ dưới */
+}
+
+.section-title::after {
+    content: '';
+    display: block; /* Quan trọng để margin: auto hoạt động */
+    width: 80px; /* Chiều rộng đường kẻ dưới */
+    height: 4px; /* Độ dày đường kẻ dưới */
+    background-color: var(--color-accent); /* Màu đường kẻ dưới */
+    margin: 0.5rem auto 0; /* Căn giữa đường kẻ dưới */
+    border-radius: 2px;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Utility Classes */
+.text-center { text-align: center; }
+.margin-top-md { margin-top: var(--spacing-md); }
+.margin-bottom-md { margin-bottom: var(--spacing-md); }
+
+/* Buttons for Hero Section, etc. */
+.btn-primary {
+    background-color: var(--color-secondary); /* Primary button now uses blue accent */
+    color: var(--color-white);
+    padding: 0.9rem 1.8rem;
+    border-radius: var(--border-radius-md);
+    font-weight: 600;
+    font-size: 1.1rem;
+    box-shadow: var(--box-shadow-sm);
+}
+.btn-primary:hover {
+    background-color: var(--color-secondary-dark);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: var(--color-accent); /* Secondary button now uses green accent */
+    color: var(--color-white);
+    padding: 0.9rem 1.8rem;
+    border-radius: var(--border-radius-md);
+    font-weight: 600;
+    font-size: 1.1rem;
+    box-shadow: var(--box-shadow-sm);
+}
+.btn-secondary:hover {
+    background-color: var(--color-accent-dark);
+    transform: translateY(-2px);
+}
+
+.btn-outline-primary {
+    background-color: transparent;
+    color: var(--color-secondary);
+    border: 2px solid var(--color-secondary);
+    padding: 0.8rem 1.6rem;
+    border-radius: var(--border-radius-md);
+    font-weight: 600;
+    font-size: 1rem;
+}
+.btn-outline-primary:hover {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    transform: translateY(-2px);
+}
+
+/* Base Modal Overlay for all modals */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(3px);
+    overflow-y: auto; /* Allow scrolling for long content */
+    padding: var(--spacing-sm); /* Add some padding for small screens */
+}
+
+/* Animations */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@keyframes slideInFromBottomRight {
+    from {
+        opacity: 0;
+        transform: translate(20px, 20px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes pulse {
+    0% { background-color: var(--color-medium-gray); }
+    50% { background-color: var(--color-border); }
+    100% { background-color: var(--color-medium-gray); }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Responsive Adjustments */
+@media (min-width: 768px) {
+    /* .hero-content styles will be in HeroSection.css */
+    /* .hero-buttons styles will be in HeroSection.css */
+}
+
+@media (max-width: 900px) {
+    .app-container {
+        /* Add some padding or margin adjustments if needed */
+    }
+
+    /* .modal-body styles will be in ProductDetailModal.css */
+    /* .chatbot-toggle-button styles will be in Chatbot.css */
+    /* .chatbot-container styles will be in Chatbot.css */
+
+    .toast {
+        bottom: var(--spacing-md);
+        right: var(--spacing-md);
+        left: var(--spacing-md); /* Full width on small screens */
+        text-align: center;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 600px) {
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.6rem; }
+    h3 { font-size: 1.3rem; }
+
+    /* Hero section buttons will be in HeroSection.css */
+    /* Search/filter inputs will be in SearchFilterSection.css */
+    /* Product grid will be in ProductGrid.css */
+    /* Product card actions will be in ProductCard.css */
+}
+
+@media (max-width: 400px) {
+    /* Nav buttons will be in Header.css */
+}

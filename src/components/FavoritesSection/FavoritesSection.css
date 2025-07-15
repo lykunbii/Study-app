@@ -1,0 +1,171 @@
+/* ===================================== */
+/* Favorites Section Styles              */
+/* ===================================== */
+.favorites-section-container {
+    padding: var(--spacing-xxl) var(--spacing-xl);
+    max-width: 800px; /* Match cart-items-list max-width for consistency */
+    margin: var(--spacing-lg) auto;
+    background-color: var(--color-white);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-lg); /* Sử dụng shadow-lg để khớp với app-container style */
+}
+
+.favorites-section-container .section-title {
+    font-size: 2rem; /* Match cart-title font-size */
+    color: var(--color-secondary-dark); /* Match cart-title color */
+    margin-bottom: var(--spacing-xl);
+    text-align: center;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.favorites-section-container .section-title::after {
+    content: '';
+    display: block; /* Ensure it behaves like a block for margin auto */
+    width: 80px; /* Match cart-title::after width */
+    height: 4px; /* Match cart-title::after height */
+    background-color: var(--color-accent); /* Match cart-title::after color */
+    margin: 0.5rem auto 0; /* Match cart-title::after margin */
+    border-radius: 2px;
+}
+
+.favorites-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    /* No max-width here, as the container already has it */
+    margin: 0 auto var(--spacing-lg); /* Add margin-bottom for consistency */
+}
+
+.favorite-item-card {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    background-color: var(--color-white); /* Match cart-item-card background */
+    border: 1px solid var(--color-border); /* Match cart-item-card border */
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-sm); /* Match cart-item-card padding */
+    box-shadow: var(--box-shadow-sm); /* Match cart-item-card shadow */
+    transition: none; /* Remove hover transform from previous favorite style to match cart */
+}
+
+/* Remove hover effect if you want it exactly like cart */
+/* .favorite-item-card:hover {
+    box-shadow: none;
+    transform: none;
+} */
+
+
+.favorite-item-left {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    flex-grow: 1;
+}
+
+.favorite-item-image {
+    width: 80px; /* Match cart-item-image width */
+    height: 60px; /* Match cart-item-image height */
+    object-fit: cover;
+    border-radius: var(--border-radius-sm);
+    flex-shrink: 0; /* Match cart-item-image flex-shrink */
+}
+
+.favorite-item-details {
+    flex-grow: 1;
+    display: flex; /* Ensure it's a flex container for name and price */
+    flex-direction: column; /* Stack name and price vertically */
+}
+
+.favorite-item-name {
+    font-size: 1.1rem; /* Match cart-item-name font-size */
+    margin-bottom: 0.25rem; /* Match cart-item-name margin-bottom */
+    color: var(--color-text);
+    font-weight: 600;
+}
+
+.favorite-item-price {
+    font-size: 0.95rem; /* Match cart-item-price font-size */
+    color: var(--color-secondary-dark);
+    font-weight: 500;
+    /* Removed margin-bottom to match cart more closely if button is aligned flex-start below */
+    margin-bottom: 0; /* Ensure no extra space if actions are aligned to end */
+}
+
+.favorite-item-actions {
+    display: flex; /* Use flex to align buttons */
+    gap: var(--spacing-sm); /* Spacing between buttons */
+    align-items: center; /* Vertically align buttons in the middle */
+    flex-shrink: 0; /* Prevent actions from shrinking */
+}
+
+/* Nút nhỏ cho action trong danh sách yêu thích */
+.btn-add-to-cart-sm {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    padding: 0.4rem 0.8rem; /* Match remove-from-cart-button padding */
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    font-size: 0.85rem; /* Match remove-from-cart-button font-size */
+    transition: background-color 0.2s ease;
+    /* Removed align-self: flex-start; to align with other items in flex */
+}
+
+.btn-add-to-cart-sm:hover {
+    background-color: var(--color-primary-dark);
+}
+
+.btn-remove-sm {
+    background-color: var(--color-danger); /* Match remove-from-cart-button background */
+    color: var(--color-white);
+    border: none;
+    padding: 0.4rem 0.8rem; /* Match remove-from-cart-button padding */
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    font-size: 0.85rem; /* Match remove-from-cart-button font-size */
+    transition: background-color 0.2s ease;
+    /* Removed align-self: flex-start; to align with other items in flex */
+}
+
+.btn-remove-sm:hover {
+    background-color: #C0392B; /* Match remove-from-cart-button hover */
+}
+
+
+/* Message when no items */
+.no-items-message {
+    text-align: center;
+    color: var(--color-dark-gray);
+    font-style: italic;
+    padding: var(--spacing-xl);
+    background-color: var(--color-light-gray);
+    border-radius: var(--border-radius-md);
+    margin: var(--spacing-lg) auto;
+    max-width: 600px;
+}
+
+.no-items-message p {
+    margin-top: var(--spacing-sm);
+    font-size: var(--font-size-md);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .favorite-item-card {
+        flex-direction: column; /* Stack items vertically on small screens */
+        align-items: flex-start; /* Align content to the start */
+        gap: var(--spacing-sm);
+    }
+
+    .favorite-item-actions {
+        width: 100%; /* Make buttons span full width */
+        justify-content: flex-end; /* Align buttons to the right */
+        margin-top: var(--spacing-sm);
+    }
+    /* Adjust image size for smaller screens if necessary, or keep as is */
+    /* .favorite-item-image {
+        width: 60px;
+        height: 45px;
+    } */
+}

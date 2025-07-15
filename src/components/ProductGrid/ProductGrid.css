@@ -1,0 +1,60 @@
+/* ===================================== */
+/* 5. Product Grid & Card - Product Grid */
+/* ===================================== */
+.product-grid {
+    display: grid;
+    /* Điều chỉnh lại grid-template-columns */
+    /* Mục tiêu: Hiển thị 3-4 cột trên màn hình lớn, hoặc 2 cột trên màn hình trung bình, 1 cột trên di động */
+    /* minmax(250px, 1fr) sẽ giúp các cột không quá nhỏ và tự động co giãn */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--spacing-lg); /* Giữ nguyên khoảng cách giữa các thẻ */
+    padding-bottom: var(--spacing-lg);
+    /* Căn giữa lưới trong trường hợp có ít cột hơn */
+    justify-content: center;
+    /* Để đảm bảo rằng nó không quá rộng và giữ một khoảng đệm ở hai bên */
+    max-width: 1200px; /* Có thể điều chỉnh tùy theo kích thước mong muốn */
+    margin: 0 auto; /* Căn giữa toàn bộ lưới */
+}
+
+/* Các tin nhắn khi không có kết quả */
+.no-results-message,
+.no-items-message {
+    text-align: center;
+    color: var(--color-dark-gray);
+    font-style: italic;
+    padding: var(--spacing-xl);
+    background-color: var(--color-light-gray);
+    border-radius: var(--border-radius-md);
+    margin: var(--spacing-lg) auto;
+    max-width: 600px;
+}
+
+/* Responsive adjustments for ProductGrid */
+@media (max-width: 1024px) { /* Cho các màn hình tablet lớn hơn và laptop nhỏ */
+    .product-grid {
+        /* Cho phép hiển thị 2-3 cột */
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: var(--spacing-md); /* Khoảng cách nhỏ hơn trên màn hình nhỏ hơn */
+        padding-left: var(--spacing-md); /* Thêm padding ngang để không bị dính viền */
+        padding-right: var(--spacing-md);
+    }
+}
+
+@media (max-width: 768px) { /* Cho các màn hình tablet và điện thoại ngang */
+    .product-grid {
+        /* Đảm bảo ít nhất 2 cột khi có thể */
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: var(--spacing-md);
+        padding-left: var(--spacing-md);
+        padding-right: var(--spacing-md);
+    }
+}
+
+@media (max-width: 600px) { /* Cho các màn hình điện thoại */
+    .product-grid {
+        grid-template-columns: 1fr; /* 1 cột trên di động */
+        gap: var(--spacing-md);
+        padding-left: var(--spacing-md);
+        padding-right: var(--spacing-md);
+    }
+}

@@ -1,0 +1,107 @@
+/* ===================================== */
+/* 6. Product Detail Modal               */
+/* ===================================== */
+/* Lưu ý: .modal-overlay là global, được định nghĩa trong global.css */
+
+.modal-content {
+    background-color: var(--color-white);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--box-shadow-lg);
+    max-width: 900px;
+    width: 95%;
+    position: relative;
+    animation: fadeInScale 0.3s ease-out;
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: var(--spacing-md);
+}
+
+.modal-title {
+    margin: 0;
+    font-size: 1.8rem;
+    color: var(--color-secondary-dark);
+    font-weight: 600;
+}
+
+.modal-close-button {
+    background: none;
+    border: none;
+    font-size: 2.5rem;
+    cursor: pointer;
+    color: var(--color-dark-gray);
+    line-height: 1;
+    transition: color 0.2s ease;
+    padding: 0;
+}
+
+.modal-close-button:hover {
+    color: var(--color-danger);
+}
+
+.modal-body {
+    display: flex;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+.modal-image-container {
+    flex: 1;
+    min-width: 300px;
+    max-width: 450px;
+}
+
+.modal-image {
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--box-shadow-sm);
+}
+
+.modal-details {
+    flex: 2;
+    min-width: 300px;
+}
+
+.modal-price {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-sm);
+}
+
+.modal-description {
+    font-size: 1rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-md);
+    white-space: pre-wrap;
+}
+
+.modal-reviews,
+.modal-category {
+    font-size: 0.95rem;
+    color: var(--color-dark-gray);
+    margin-bottom: var(--spacing-xs);
+}
+
+/* Responsive adjustments for ProductDetailModal */
+@media (max-width: 900px) {
+    .modal-body {
+        flex-direction: column;
+    }
+
+    .modal-image-container,
+    .modal-details {
+        min-width: unset;
+        width: 100%;
+        max-width: 100%;
+    }
+}

@@ -1,0 +1,86 @@
+/* ===================================== */
+/* 12. New Homepage Sections - Hero Section */
+/* ===================================== */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xl);
+    background-color: var(--color-light-gray);
+    color: var(--color-text);
+    border-radius: var(--border-radius-lg);
+    margin-bottom: var(--spacing-xl);
+    flex-wrap: wrap;
+    gap: var(--spacing-lg);
+    box-shadow: var(--box-shadow-sm);
+}
+
+.hero-content {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-secondary-dark);
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-text-light);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.hero-image-container {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--box-shadow-lg);
+    transition: transform 0.3s ease;
+}
+.hero-image:hover {
+    transform: scale(1.02);
+}
+
+/* Responsive adjustments for HeroSection */
+@media (min-width: 768px) {
+    .hero-content {
+        text-align: left;
+    }
+    .hero-buttons {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-title {
+        font-size: 2.8rem;
+    }
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    .hero-buttons {
+        flex-direction: column;
+    }
+    .btn-primary, .btn-secondary {
+        width: 100%;
+    }
+}

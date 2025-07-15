@@ -1,0 +1,107 @@
+/* ===================================== */
+/* 11. Auth Modals (Login/Register)      */
+/* ===================================== */
+/* Lưu ý: .modal-overlay là global, được định nghĩa trong global.css */
+
+.auth-modal {
+    background-color: var(--color-white);
+    padding: var(--spacing-lg) var(--spacing-xl);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--box-shadow-lg);
+    max-width: 480px;
+    width: 90%;
+    position: relative;
+    animation: fadeInScale 0.3s ease-out;
+}
+
+.auth-modal .modal-header {
+    padding-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.auth-modal .modal-title {
+    font-size: 2rem;
+    color: var(--color-secondary);
+    font-weight: 700;
+}
+
+.auth-form .form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.auth-form label {
+    display: block;
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+    color: var(--color-text);
+    font-size: 0.95rem;
+}
+
+.auth-form input[type="email"],
+.auth-form input[type="password"],
+.auth-form input[type="text"] {
+    width: 100%;
+    padding: 0.9rem 1.2rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    font-size: 1rem;
+    color: var(--color-text);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+    background-color: var(--color-white);
+}
+
+.auth-form input[type="email"]:focus,
+.auth-form input[type="password"]:focus,
+.auth-form input[type="text"]:focus {
+    border-color: var(--color-secondary);
+    box-shadow: 0 0 0 3px rgba(44, 126, 187, 0.2);
+    outline: none;
+}
+
+.auth-submit-button {
+    width: 100%;
+    padding: 1.1rem;
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    border: none;
+    border-radius: var(--border-radius-md);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    margin-top: var(--spacing-md);
+}
+
+.auth-submit-button:hover {
+    background-color: var(--color-secondary-dark);
+    transform: translateY(-2px);
+}
+
+.auth-submit-button:active {
+    transform: translateY(0);
+}
+
+.auth-switch-text {
+    text-align: center;
+    margin-top: var(--spacing-lg);
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+}
+
+.auth-switch-button {
+    background: none;
+    border: none;
+    color: var(--color-secondary);
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: inherit;
+    padding: 0;
+    transition: color 0.2s ease;
+}
+
+.auth-switch-button:hover {
+    color: var(--color-secondary-dark);
+}

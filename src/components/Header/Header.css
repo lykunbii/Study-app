@@ -1,0 +1,104 @@
+/* ===================================== */
+/* 2. App Layout - Header                */
+/* ===================================== */
+.app-header {
+    background: var(--color-primary-light);
+    color: var(--color-text);
+    padding: var(--spacing-md) var(--spacing-lg);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--box-shadow-sm);
+    border-bottom: 1px solid var(--color-primary-dark);
+}
+
+.app-title {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-secondary-dark);
+    flex-shrink: 0;
+    margin-bottom: 0.5rem; /* For small screens */
+}
+
+.app-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-left: auto;
+}
+
+.nav-button {
+    background-color: transparent;
+    color: var(--color-text);
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--border-radius-md);
+    font-weight: 500;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+}
+
+.nav-button:hover {
+    background-color: var(--color-primary-dark);
+    color: var(--color-secondary-dark);
+    transform: translateY(-1px);
+}
+
+.nav-button-active {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    font-weight: 600;
+}
+
+.nav-button-active:hover {
+    background-color: var(--color-secondary-dark);
+    color: var(--color-white);
+}
+
+/* Auth Buttons - Đăng nhập / Đăng ký trong header */
+.auth-button {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--border-radius-md);
+    font-weight: 500;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    border: none; /* Đảm bảo không có border thừa */
+    box-shadow: none; /* Đảm bảo không có shadow thừa */
+}
+
+.auth-button:hover {
+    background-color: var(--color-secondary-dark);
+    transform: translateY(-1px);
+}
+
+/* Responsive adjustments for Header */
+@media (max-width: 900px) {
+    .app-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .app-title {
+        margin-bottom: var(--spacing-sm);
+        text-align: center;
+        width: 100%;
+    }
+
+    .app-nav {
+        margin-left: 0;
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 400px) {
+    .app-nav {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .nav-button, .auth-button {
+        width: 100%;
+        text-align: center;
+    }
+}
