@@ -4,154 +4,260 @@
 .product-card {
     background-color: var(--color-white);
     border-radius: var(--border-radius-lg);
-    box-shadow: var(--box-shadow-sm);
-    overflow: hidden;
+    box-shadow: var(--shadow-sm); /* Sử dụng predefined shadow variable */
+    overflow: hidden; /* Ensures content respects border-radius */
     display: flex;
     flex-direction: column;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    /* Smoother transition for transform, shadow, and border-color */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    cursor: pointer; /* Indicates interactivity */
+    border: 1px solid var(--color-border-light); /* Subtle border for definition */
 }
 
 .product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--box-shadow-md);
+    transform: translateY(-8px); /* More pronounced lift on hover */
+    box-shadow: var(--shadow-lg); /* Stronger shadow on hover to enhance the "pop" effect */
+    border-color: var(--color-accent); /* Giữ màu accent cho viền hover của card */
 }
 
 .product-card-image {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-bottom: 1px solid var(--color-medium-gray);
+    height: 180px; /* Slightly reduced height for better card proportions */
+    object-fit: cover; /* Ensures image covers the area without distortion */
+    border-bottom: 1px solid var(--color-border); /* Clear separator */
+    transition: transform 0.3s ease; /* Transition for image zoom effect */
+}
+
+.product-card:hover .product-card-image {
+    transform: scale(1.05); /* Gentle zoom effect on image when card is hovered */
 }
 
 .product-card-content {
     padding: var(--spacing-md);
-    flex-grow: 1;
+    flex-grow: 1; /* Allows content to expand and push actions to the bottom */
     display: flex;
     flex-direction: column;
+    justify-content: space-between; /* Pushes content to top, actions to bottom */
 }
 
 .product-card-name {
-    font-size: 1.25rem;
+    font-size: var(--font-size-lg); /* Consistent font sizing */
     margin-bottom: var(--spacing-xs);
     color: var(--color-secondary-dark);
-    font-weight: 600;
-    min-height: 2.5rem;
+    font-weight: 700; /* Bolder for prominence */
+    min-height: 2.8em; /* Ensures 2 lines of text, prevents layout shifts */
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 2; /* Truncate to 2 lines */
     -webkit-box-orient: vertical;
+    line-height: 1.4; /* Improved readability for multi-line text */
+    text-overflow: ellipsis; /* Add ellipsis if truncated */
 }
 
 .product-card-price {
-    font-size: 1.1rem;
-    font-weight: 700;
+    font-size: 1.25rem; /* Slightly larger for emphasis */
+    font-weight: 800; /* Extra bold for price prominence */
     color: var(--color-accent);
-    margin-bottom: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
 }
 
 .product-card-description {
-    font-size: 0.9rem;
+    font-size: var(--font-size-sm); /* Consistent font sizing */
     color: var(--color-text-light);
-    flex-grow: 1;
+    flex-grow: 1; /* Allows description to fill available space */
     margin-bottom: var(--spacing-md);
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 3; /* Truncate to 3 lines */
     -webkit-box-orient: vertical;
+    line-height: 1.5; /* Improved readability */
+    text-overflow: ellipsis;
 }
 
 .product-card-actions {
     display: flex;
+    justify-content: space-between; 
     align-items: center;
-    gap: var(--spacing-sm);
-    margin-top: auto;
+    gap: var(--spacing-sm); 
+    margin-top: auto; 
+    padding-top: var(--spacing-sm); 
+    border-top: 1px solid var(--color-border-light); 
 }
 
+/* Container for the two main action buttons */
+.product-card-main-buttons {
+    display: flex;
+    flex-grow: 1; /* Allows this container to grow */
+    gap: var(--spacing-sm); /* Gap between detail and add-to-cart buttons */
+}
+
+/* Base styles for the two main action buttons */
+.product-card-detail-button,
+.product-card-add-to-cart-button {
+    padding: 0.8rem 1rem; /* Consistent padding for vertical and horizontal */
+    border-radius: var(--border-radius-md);
+    font-weight: 600; /* Bolder text on buttons */
+    /* Ensure these two buttons share space equally */
+    flex: 1 1 0%; /* Flex-grow, flex-shrink, flex-basis: ensures equal distribution */
+    text-align: center;
+    text-decoration: none; /* Remove underline for links */
+    transition: all 0.3s ease; /* Smooth transitions for all properties */
+    border: none; /* Remove default button border */
+    cursor: pointer;
+    /* Use flex to vertically center text/icon if it wraps */
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    white-space: nowrap; /* Prevent text from wrapping too early */
+}
+
+/* Specific styles for Detail Button */
 .product-card-detail-button {
     background-color: var(--color-secondary);
     color: var(--color-white);
-    padding: 0.75rem 1rem;
-    border-radius: var(--border-radius-md);
-    font-weight: 500;
-    flex-grow: 1;
-    text-align: center;
+    font-size: var(--font-size-md); /* Consistent font-size */
 }
 
 .product-card-detail-button:hover {
-    background-color: var(--color-secondary-dark);
-    transform: translateY(-1px);
+    background-color: var(--color-secondary-dark); /* Darken on hover */
+    transform: translateY(-2px); /* Lift effect */
+    box-shadow: var(--shadow-xs); /* Subtle shadow on hover */
 }
 
+/* Specific styles for Add to Cart Button (now with icon, keeping original color) */
 .product-card-add-to-cart-button {
-    background-color: var(--color-accent);
+    background-color: var(--color-accent); /* GIỮ NGUYÊN MÀU ACCENT */
     color: var(--color-white);
-    padding: 0.75rem 1rem;
-    border-radius: var(--border-radius-md);
-    font-weight: 500;
-    flex-grow: 1;
-    text-align: center;
-    white-space: nowrap;
+    font-size: var(--font-size-md); /* Consistent font-size for icon positioning */
 }
 
 .product-card-add-to-cart-button:hover {
-    background-color: var(--color-accent-dark);
-    transform: translateY(-1px);
+    background-color: var(--color-accent-dark); /* Darken on hover */
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xs);
 }
 
+/* New CSS for the shopping cart icon */
+.shopping-cart-icon {
+    width: 24px; /* Kích thước icon */
+    height: 24px; /* Kích thước icon */
+    stroke: currentColor; /* Đảm bảo màu stroke của SVG kế thừa từ màu text của button */
+    fill: none; /* Thường là none cho icon dạng outline */
+    /* Thêm khoảng cách nếu bạn muốn có text bên cạnh icon */
+    /* margin-right: 8px; */ 
+}
+
+/* Favorite Button - Adjusted for better visual balance */
 .favorite-button {
-    background-color: var(--color-medium-gray);
+    background-color: var(--color-light-gray);
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 44px; 
+    height: 44px; 
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-shrink: 0;
+    flex-shrink: 0; 
     color: var(--color-dark-gray);
-    transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+    transition: all 0.3s ease;
     padding: 0;
+    border: 1px solid var(--color-border); 
+    cursor: pointer;
+    font-size: 1.5rem; /* Tăng kích thước cho icon ❤️ nếu là text */
 }
 
 .favorite-button:hover {
-    background-color: var(--color-light-gray);
-    color: var(--color-secondary);
-    transform: scale(1.05);
+    background-color: var(--color-border); 
+    color: var(--color-accent); /* Giữ màu accent cho icon yêu thích khi hover */
+    transform: scale(1.1); 
 }
 
 .favorite-button.favorite-active {
-    background-color: var(--color-danger);
+    background-color: var(--color-danger); 
     color: var(--color-white);
+    border-color: var(--color-danger); 
 }
 
 .favorite-button.favorite-active:hover {
-    background-color: #C0392B;
+    background-color: var(--color-danger-dark); 
     color: var(--color-white);
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
 .favorite-icon {
-    width: 24px;
-    height: 24px;
+    width: 20px; 
+    height: 20px;
+    fill: currentColor; 
 }
 
 /* Responsive adjustments for ProductCard */
-@media (max-width: 600px) {
-    .product-card-actions {
-        flex-direction: column;
+@media (max-width: 768px) {
+    .product-card-image {
+        height: 150px; 
+    }
+
+    .product-card-name {
+        font-size: var(--font-size-md);
+        min-height: unset; 
+    }
+
+    .product-card-price {
+        font-size: 1.1rem;
+    }
+
+    .product-card-description {
+        font-size: var(--font-size-xs);
+        -webkit-line-clamp: 2; 
     }
 
     .product-card-detail-button,
     .product-card-add-to-cart-button {
-        width: 100%;
+        padding: 0.7rem 0.8rem;
+        font-size: 0.9rem;
     }
 
     .favorite-button {
-        width: 100%;
-        border-radius: var(--border-radius-md);
-        height: auto;
-        padding: 0.75rem;
+        width: 40px;
+        height: 40px;
+        font-size: 1.3rem; /* Điều chỉnh kích thước icon ❤️ cho responsive */
     }
     .favorite-icon {
-        margin: 0 auto;
+        width: 18px;
+        height: 18px;
+    }
+    .shopping-cart-icon { /* Responsive cho icon giỏ hàng */
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-card-actions {
+        flex-direction: column; 
+        align-items: stretch; 
+        gap: var(--spacing-sm);
+    }
+
+    .product-card-main-buttons {
+        width: 100%; 
+        gap: var(--spacing-sm); 
+    }
+
+    .product-card-detail-button,
+    .product-card-add-to-cart-button,
+    .favorite-button {
+        width: 100%; 
+        border-radius: var(--border-radius-md); 
+        height: auto; 
+        padding: 0.8rem; 
+        border-radius: var(--border-radius-md);
+    }
+
+    .shopping-cart-icon { /* Đảm bảo icon giỏ hàng căn giữa khi button full width */
+        width: 24px; /* Giữ kích thước ban đầu */
+        height: 24px;
+    }
+
+    .favorite-icon {
+        margin: 0 auto; 
     }
 }

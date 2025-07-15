@@ -96,13 +96,3 @@
     }
 }
 
-/* Thêm biến màu RGB nếu chưa có trong global.css để dùng cho box-shadow rgba() */
-/* Ví dụ trong global.css của bạn */
-/*
-:root {
-    --color-primary: #3498DB;
-    --color-primary-rgb: 52, 152, 219; // Thêm biến này
-    --color-secondary: #2C7EBB; // Darker primary for focus
-    // ... các biến khác
-}
-*/

@@ -91,7 +91,16 @@
         justify-content: center;
     }
 }
-
+@media (max-width: 600px) {
+    .app-title {
+        font-size: 1.3rem;
+        margin-bottom: var(--spacing-xs);
+    }
+    .nav-button, .auth-button {
+        font-size: 0.95rem;
+        padding: 0.6rem 0.8rem;
+    }
+}
 @media (max-width: 400px) {
     .app-nav {
         flex-direction: column;
