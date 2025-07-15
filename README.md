@@ -46,8 +46,8 @@ src/
 
 1. **Clone repo:**
    ```
-   git clone https://github.com/lykunbii/My-study-app.git
-   cd My-study-app
+   git clone https://github.com/lykunbii/Study-app.git
+   cd Study-app
    ```
 
 2. **Cài đặt dependencies:**
