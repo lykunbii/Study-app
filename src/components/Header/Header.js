@@ -1,5 +1,6 @@
 import React, { useState } from 'react'; // Import useState hook
 import './Header.css'; // Import CSS riêng của Header
+import Logo from '../../assets/logo.png'; // Import logo từ assets
 
 const Header = ({
   onLoginClick,
@@ -31,8 +32,17 @@ const Header = ({
     // Ở đây tôi gắn class 'open' vào app-nav, và 'active' vào hamburger button
     <header className="app-header">
       <div className="header-left">
-        {/* Sử dụng site-logo để giữ style và onClick */}
-        <h1 className="site-logo" onClick={() => { onHomeClick(); closeMenu(); }}>EduAI</h1>
+        <img
+        src={Logo}
+        alt="StudyAI Logo"
+        className="site-logo"
+        onClick={() => { onHomeClick(); closeMenu(); }}
+        style={{ cursor: 'pointer', height: '2.5rem', marginRight: '0.75rem' }}
+      />
+      <div className="logo-text">
+        <span className="logo-title">EduAI</span>
+        <span className="logo-subtitle">Smart Learning</span>
+      </div>
       </div>
 
       {/* Nút Hamburger Menu - chỉ hiển thị trên mobile */}

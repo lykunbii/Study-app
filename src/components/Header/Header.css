@@ -29,6 +29,39 @@
     flex-shrink: 0; /* Ngăn không cho title co lại */
     /* margin-bottom: 0.5rem; */ /* Bỏ cái này vì flex-wrap sẽ tự xử lý trên mobile */
 }
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.site-logo {
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(80, 0, 200, 0.07);
+    background: transparent;
+    margin-right: 0.75rem;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logo-title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #1e293b;
+    line-height: 1.1;
+}
+
+.logo-subtitle {
+    font-size: 1rem;
+    color: #64748b;
+    line-height: 1;
+    margin-top: 0.1rem;
+}
 
 /* Hamburger Menu Button (MỚI) */
 .hamburger-menu-button {
