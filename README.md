@@ -69,7 +69,7 @@ src/
 
 ## 📸 Demo
 
-![Demo giao diện]([Demo](https://study-app-livid-ten.vercel.app/))
+![Demo giao diện]([Demo](https://study-app-livid-ten.vercel.app/) 
 
 ---
 
