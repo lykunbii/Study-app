@@ -1,77 +1,77 @@
-# My Study App
+# Study App
 
-Ứng dụng quản lý học tập cá nhân, giúp bạn tìm kiếm, lưu trữ và quản lý các khóa học, tài liệu, đồng thời hỗ trợ chức năng giỏ hàng, yêu thích và chatbot hỗ trợ.
+Ứng dụng web học tập với các chức năng:
+- Tìm kiếm, lọc, xem chi tiết khóa học/tài liệu
+- Thêm vào giỏ hàng, mục yêu thích
+- Gợi ý sản phẩm phù hợp (AI Suggestion)
+- Chatbot hỗ trợ
+- Responsive, giao diện hiện đại
 
-## Tính năng chính
+## 🚀 Chức năng nổi bật
 
-- **Tìm kiếm & lọc:** Tìm kiếm khóa học/tài liệu theo tên, loại, giá.
-- **Quản lý giỏ hàng:** Thêm/xóa sản phẩm, thanh toán.
-- **Yêu thích:** Đánh dấu và quản lý sản phẩm yêu thích.
-- **Chi tiết sản phẩm:** Xem thông tin chi tiết từng khóa học/tài liệu.
-- **Đăng nhập/Đăng ký:** Modal xác thực người dùng.
-- **Chatbot:** Hỗ trợ tìm kiếm và tư vấn sản phẩm.
-- **Responsive:** Giao diện tối ưu cho cả desktop và mobile.
+- **Tìm kiếm & Lọc:**  
+  Tìm kiếm theo tên, mô tả, từ khóa, lọc theo giá và loại sản phẩm.
 
-## Cấu trúc thư mục
+- **Giỏ hàng & Yêu thích:**  
+  Thêm/xóa sản phẩm vào giỏ hàng hoặc danh sách yêu thích.
+
+- **Gợi ý sản phẩm phù hợp (AI):**  
+  Nút "Gợi ý sản phẩm phù hợp" sẽ đề xuất các sản phẩm dựa trên hành vi người dùng (đã thích, đã xem).
+
+- **Chatbot:**  
+  Hỗ trợ trả lời nhanh về sản phẩm.
+
+- **Responsive:**  
+  Giao diện đẹp trên cả desktop và mobile.
+
+## 🛠️ Cài đặt & chạy dự án
+
+```bash
+git clone <repo-url>
+cd Study-app
+npm install
+npm start
+```
+
+Truy cập [http://localhost:3000](http://localhost:3000)
+
+## 📝 Cấu trúc thư mục
 
 ```
 src/
   components/
     Header/
+    HeroSection/
     SearchFilterSection/
+    ProductTabs/
     ProductGrid/
     ProductDetailModal/
-    FavoritesSection/
     CartSection/
-    AuthModal/
-    Toast/
+    FavoritesSection/
     Chatbot/
-  pages/
-    Home/
-    Cart/
-    Favorites/
-  assets/
-    images/
-    icons/
+    Toast/
   styles/
-    variables.css
     global.css
-  utils/
-    helpers.js
   App.js
-  index.js
 ```
 
-## Cài đặt & chạy dự án
+## 💡 Gợi ý sản phẩm AI hoạt động như thế nào?
 
-1. **Clone repo:**
-   ```
-   git clone https://github.com/lykunbii/Study-app.git
-   cd Study-app
-   ```
+- Khi bấm nút "Gợi ý sản phẩm phù hợp", hệ thống sẽ:
+  - Nếu bạn đã thích sản phẩm nào, sẽ gợi ý các sản phẩm cùng danh mục nhưng bạn chưa thích.
+  - Nếu chưa thích gì, sẽ gợi ý ngẫu nhiên 3 sản phẩm đầu tiên.
 
-2. **Cài đặt dependencies:**
-   ```
-   npm install
-   ```
+## 📦 Công nghệ sử dụng
 
-3. **Chạy ứng dụng:**
-   ```
-   npm start
-   ```
+- ReactJS
+- CSS3 (custom, không dùng framework UI)
+- (Có thể mở rộng: API, Firebase, ...)
 
-4. Truy cập [http://localhost:3000](http://localhost:3000) trên trình duyệt.
+## 📸 Demo
 
-## Đóng góp
-
-- Fork repo, tạo branch mới, commit và gửi pull request.
-- Vui lòng mô tả rõ thay đổi khi gửi PR.
-
-## License
-
-MIT
+![Demo giao diện]([Demo](https://study-app-livid-ten.vercel.app/))
 
 ---
 
-**Liên hệ:**  
-Nếu có thắc mắc hoặc góp ý, vui lòng liên hệ qua email 123ntly17042004@gmail.com
+**Tác giả:**  
+Nguyen Thi Ly
