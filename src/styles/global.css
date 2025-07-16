@@ -297,3 +297,60 @@ img {
 @media (max-width: 400px) {
     /* Nav buttons will be in Header.css */
 }
+/* ...existing code... */
+
+/* Hiển thị hàng ngang cho thanh tìm kiếm và nút gợi ý */
+.search-suggest-row {
+  margin-bottom: 1.2rem;
+}
+
+/* Container cho filter và nút gợi ý */
+.search-filter-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  justify-content: flex-start;
+  background: #fff;
+  border-radius: var(--border-radius-lg, 12px);
+  box-shadow: var(--box-shadow-sm);
+  padding: 1.5rem 2rem;
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+/* Nút gợi ý sản phẩm phù hợp */
+.btn-suggest {
+  background: var(--color-secondary, #2563eb);
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: var(--border-radius-md, 8px);
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  box-shadow: 0 2px 8px rgba(44,126,187,0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+  white-space: nowrap;
+}
+.btn-suggest:hover {
+  background: var(--color-secondary-dark, #1e40af);
+  box-shadow: 0 4px 16px rgba(44,126,187,0.15);
+}
+
+/* Responsive: filter và nút gợi ý xuống dòng khi màn nhỏ */
+@media (max-width: 700px) {
+  .search-filter-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.7rem;
+    padding: 1rem;
+  }
+}
+
+/* ...existing code... */
+
+

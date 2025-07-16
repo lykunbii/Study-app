@@ -16,6 +16,9 @@ import './styles/global.css';
 function App() {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showRegisterModal, setShowRegisterModal] = useState(false);
+  const [suggestedProducts, setSuggestedProducts] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+
   const [showProductDetailModal, setShowProductDetailModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [activeProductTab, setActiveProductTab] = useState('all');
@@ -44,10 +47,9 @@ function App() {
   ];
 
   const [products, setProducts] = useState(initialProducts.map(p => ({
-      ...p,
-      isFavorite: false,
+    ...p,
+    isFavorite: false,
   })));
-
 
   const handleLoginClick = () => {
     setShowLoginModal(true);
@@ -62,6 +64,31 @@ function App() {
   const handleCloseAuthModal = () => {
     setShowLoginModal(false);
     setShowRegisterModal(false);
+  };
+
+  const handleSuggestProducts = () => {
+    setShowSuggestions(true);
+    setToast({ message: 'Đang lấy gợi ý sản phẩm...', type: 'info' });
+    setTimeout(() => {
+      // Giả lập API: gợi ý dựa trên sản phẩm đã thích
+      const favorites = getFavoriteProducts();
+      let suggestions;
+      if (favorites.length > 0) {
+        const favoriteCategories = favorites.map(f => f.category);
+        suggestions = products.filter(
+          p =>
+            favoriteCategories.includes(p.category) &&
+            !favorites.some(f => f.id === p.id)
+        );
+        if (suggestions.length === 0) {
+          suggestions = products.filter(p => !favorites.some(f => f.id === p.id)).slice(0, 3);
+        }
+      } else {
+        suggestions = products.slice(0, 3);
+      }
+      setSuggestedProducts(suggestions);
+      setToast({ message: 'Đã gợi ý sản phẩm phù hợp cho bạn!', type: 'success' });
+    }, 800);
   };
 
   const handleProductDetailClick = (product) => {
@@ -116,7 +143,7 @@ function App() {
   };
 
   const handleCheckout = () => {
-      setToast({ message: 'Chức năng thanh toán đang được phát triển!', type: 'info' });
+    setToast({ message: 'Chức năng thanh toán đang được phát triển!', type: 'info' });
   }
 
   const handleSearchFilterChange = (filters) => {
@@ -148,9 +175,13 @@ function App() {
     }
 
     if (searchFilters.productTypeFilter) {
-        if (activeProductTab === 'all' || (activeProductTab === 'courses' && searchFilters.productTypeFilter === 'course') || (activeProductTab === 'documents' && searchFilters.productTypeFilter === 'document')) {
-            filtered = filtered.filter(p => p.category.toLowerCase() === searchFilters.productTypeFilter);
-        }
+      if (
+        activeProductTab === 'all' ||
+        (activeProductTab === 'courses' && searchFilters.productTypeFilter === 'course') ||
+        (activeProductTab === 'documents' && searchFilters.productTypeFilter === 'document')
+      ) {
+        filtered = filtered.filter(p => p.category.toLowerCase() === searchFilters.productTypeFilter);
+      }
     }
 
     return filtered;
@@ -178,7 +209,38 @@ function App() {
             <HeroSection />
             <section className="category-section">
               <h2 className="section-title">Khám phá các khóa học và tài liệu</h2>
-              <SearchFilterSection onSearchFilterChange={handleSearchFilterChange} />
+              <div className="search-suggest-row">
+                <div className="search-filter-actions">
+                  <SearchFilterSection onSearchFilterChange={handleSearchFilterChange} />
+                  <button
+                    className="btn-suggest"
+                    onClick={handleSuggestProducts}
+                  >
+                    {/* Nếu dùng icon: <Sparkles ... /> */}
+                    Gợi ý sản phẩm phù hợp
+                  </button>
+                </div>
+              </div>
+              {showSuggestions && suggestedProducts.length > 0 && (
+                <section className="suggestion-section" style={{ margin: '1.5rem 0' }}>
+                  <h3 className="section-title" style={{ fontSize: '1.3rem' }}>Sản phẩm gợi ý cho bạn</h3>
+                  <div className="cart-items-list">
+                    {suggestedProducts.map(item => (
+                      <div key={item.id} className="cart-item-card">
+                        <img src={item.image} alt={item.name} className="cart-item-image" />
+                        <div className="cart-item-details">
+                          <div className="cart-item-name">{item.name}</div>
+                          <div className="cart-item-price">{item.price}</div>
+                        </div>
+                        <div className="cart-item-actions">
+                          <button className="btn-detail-sm" onClick={() => handleProductDetailClick(item)}>Chi tiết</button>
+                          <button className="btn-add-to-cart-sm" onClick={() => handleAddToCart(item)}>Thêm vào giỏ</button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              )}
               <ProductTabs activeTab={activeProductTab} onTabChange={setActiveProductTab} />
               <ProductGrid
                 products={getFilteredProducts()}

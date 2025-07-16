@@ -1,0 +1,90 @@
+/* ===================================== */
+/* Suggested Products Section Styles     */
+/* ===================================== */
+.suggested-products-section {
+    padding: var(--spacing-xxl) var(--spacing-xl);
+    max-width: var(--max-width-lg); /* Giữ nhất quán với các section chính */
+    margin: var(--spacing-xl) auto; /* Thêm margin để tách biệt với các section khác */
+    background-color: var(--color-white);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md); /* Bóng đổ vừa phải */
+    border: 1px solid var(--color-border);
+    text-align: center; /* Căn giữa tiêu đề và nút */
+}
+
+.suggested-products-section .section-title {
+    font-size: var(--font-size-xxl);
+    color: var(--color-heading);
+    margin-bottom: var(--spacing-xl);
+    text-align: center;
+    position: relative;
+    padding-bottom: 0.75rem;
+    font-weight: 700;
+}
+
+.suggested-products-section .section-title::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 5px;
+    background-color: var(--color-accent);
+    margin: 0.75rem auto 0;
+    border-radius: 3px;
+}
+
+.suggestions-controls {
+    margin-bottom: var(--spacing-xl); /* Khoảng cách dưới nút */
+}
+
+.suggest-button {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 1rem 2rem;
+    border-radius: var(--border-radius-md);
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.suggest-button:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.no-suggestions-message {
+    text-align: center;
+    color: var(--color-dark-gray);
+    font-style: italic;
+    padding: var(--spacing-xl);
+    background-color: var(--color-light-gray);
+    border-radius: var(--border-radius-md);
+    margin: var(--spacing-lg) auto;
+    max-width: 600px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .suggested-products-section {
+        padding: var(--spacing-xl) var(--spacing-md);
+    }
+    .suggest-button {
+        padding: 0.8rem 1.5rem;
+        font-size: var(--font-size-md);
+    }
+}
+
+@media (max-width: 480px) {
+    .suggested-products-section .section-title {
+        font-size: var(--font-size-xl);
+    }
+    .suggested-products-section .section-title::after {
+        width: 80px;
+    }
+    .suggest-button {
+        width: 100%; /* Full width trên màn hình nhỏ */
+        padding: 0.8rem 1rem;
+    }
+}

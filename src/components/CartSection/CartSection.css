@@ -1,6 +1,31 @@
 /* ===================================== */
 /* 10. Cart Tab                          */
 /* ===================================== */
+.cart-section-container {
+    padding: var(--spacing-xxl) var(--spacing-xl);
+    max-width: 800px; /* Match cart-items-list max-width for consistency */
+    margin: var(--spacing-lg) auto;
+    background-color: var(--color-white);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-lg); 
+}
+.cart-section-container .section-title {
+    font-size: 2rem; /* Match cart-title font-size */
+    color: var(--color-secondary-dark); /* Match cart-title color */
+    margin-bottom: var(--spacing-xl);
+    text-align: center;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+.cart-section-container .section-title::after {
+    content: '';
+    display: block; /* Ensure it behaves like a block for margin auto */
+    width: 80px; /* Match cart-title::after width */
+    height: 4px; /* Match cart-title::after height */
+    background-color: var(--color-accent); /* Match cart-title::after color */
+    margin: 0.5rem auto 0; /* Match cart-title::after margin */
+    border-radius: 2px;
+}
 .cart-section {
     padding: var(--spacing-lg) 0;
 }
